@@ -1,22 +1,3 @@
-# ENRICH IP (`ipatel`)
-
-## Overview
-
-`ipatel` is a lightweight and efficient Python library and CLI tool for enriching IP addresses and ASNs with metadata such as:
-
-* **ASN** (Autonomous System Number)
-* **Owner / AS Description**
-* **Country Code**
-* **IP Type** (Public / Private / Invalid)
-* **IP Ranges for ASN**
-
-### 🔑 Features
-
-* Works offline after downloading the IP-to-ASN database.
-* Built-in support to auto-update the enrichment database.
-* Friendly CLI with rich output formatting.
-* Fully tested and modular codebase.
-
 # 🚀 Quickstart Guide
 
 Welcome to **IPATEL** — a fast and lightweight IP enrichment library.
@@ -163,7 +144,9 @@ if __name__ == "__main__":
 
 ## 📚 See Also
 
-* [CLI Usage](docs/cli.md)
-* [Detailed API](docs/api.md)
-* [DB Upadte](docs/update.md)
+* [CLI Usage](cli.md)
+* [Detailed API](api.md)
+* [DB Upadte](update.md)
 * [Project Repo](https://github.com/Chethanpatel/ipatel)
+
+
