@@ -1,16 +1,16 @@
-# 🌐 `ipatel` — IP Enrichment Library & CLI
+#  `ipatel` — IP Enrichment Library & CLI
 
-## 🔍 What is `ipatel`?
+## What is `ipatel`?
 
 **`ipatel`** is a lightweight Python library and CLI tool that enriches IP addresses and ASNs with useful metadata:
 
 * 🛰️ **ASN (Autonomous System Number)**
-* 🏢 **AS Owner / Organization**
+* 🏢 **AS Owner / Organization / IP Owner**
 * 🌎 **Country Code**
 * 🧭 **IP Type** — Public / Private / Reserved
 * 📶 **IP Ranges for ASN**
 
-## ✨ Key Features
+##  Key Features
 
 * ⚡ Fast and works **offline** after initial DB download
 * 🔄 Auto-updates the enrichment database
@@ -45,9 +45,9 @@ ipatel [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
 | `-h`, `--help` | Show usage and help message.        |
 
 
-## 🚀 Quickstart Guide
+## Quickstart Guide
 
-## 🧩 Basic Setup
+## Basic Setup
 
 ```python
 import ipatel as ip
@@ -59,7 +59,7 @@ test_ip = "8.8.8.8"
 test_asn = 15169
 ```
 
-## 🌐 IP Enrichment
+## IP Enrichment
 
 ### 🔹 Enrich IP with full metadata
 
@@ -79,7 +79,7 @@ ip.enrich_ip("8.8.8.8")
 }
 ```
 
-## 🧠 ASN Lookup Functions
+## ASN Lookup Functions
 
 | Function                        | Description               | Example                           |
 | ------------------------------- | ------------------------- | --------------------------------- |
@@ -91,7 +91,7 @@ ip.enrich_ip("8.8.8.8")
 
 
 
-## 🛠️ Utilities
+## Utilities
 
 | Function                      | Description    | Output       |
 | ----------------------------- | -------------- | ------------ |
@@ -100,10 +100,10 @@ ip.enrich_ip("8.8.8.8")
 | `ip.get_ip_type("127.0.0.1")` | Detect IP type | `"Loopback"` |
 
 
-## 🔄 Database Management
+## Database Management
 
 | Task               | Function                  | Description                         |
 | ------------------ | ------------------------- | ----------------------------------- |
-| 📥 Download DB     | `ip.download_ip2asn_db()` | Manually fetch latest DB            |
-| 🔁 Ensure Fresh DB | `ip.ensure_ip2asn_db()`   | Checks & auto-downloads if outdated |
+|  Download DB     | `ip.download_ip2asn_db()` | Manually fetch latest DB            |
+|  Ensure Fresh DB | `ip.ensure_ip2asn_db()`   | Checks & auto-downloads if outdated |
 

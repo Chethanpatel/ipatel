@@ -42,6 +42,38 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-ipatel">What is ipatel?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-features">Key Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">🔧 Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-line-interface-cli">Command Line Interface (CLI)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-syntax">Basic Syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#available-flags">Available Flags</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quickstart-guide">Quickstart Guide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-setup">Basic Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ip-enrichment">IP Enrichment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enrich-ip-with-full-metadata">🔹 Enrich IP with full metadata</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#asn-lookup-functions">ASN Lookup Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-management">Database Management</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -81,15 +113,176 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="ipatel">ipatel<a class="headerlink" href="#ipatel" title="Permanent link">&para;</a></h1>
-<p>A fast IP and ASN enrichment tool that works offline after initial database download.</p>
+                <h1 id="ipatel-ip-enrichment-library-cli"><code>ipatel</code> — IP Enrichment Library &amp; CLI<a class="headerlink" href="#ipatel-ip-enrichment-library-cli" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-ipatel">What is <code>ipatel</code>?<a class="headerlink" href="#what-is-ipatel" title="Permanent link">&para;</a></h2>
+<p><strong><code>ipatel</code></strong> is a lightweight Python library and CLI tool that enriches IP addresses and ASNs with useful metadata:</p>
 <ul>
-<li>🌍 Enrich IPs with ASN, Country, and Owner</li>
-<li>📦 Lookup ASN and its IP ranges</li>
-<li>⚡ CLI and Python API support</li>
-<li>🚀 Works offline after DB download</li>
-<li>🔁 Auto-detects stale DB and warns to update</li>
+<li>🛰️ <strong>ASN (Autonomous System Number)</strong></li>
+<li>🏢 <strong>AS Owner / Organization / IP Owner</strong></li>
+<li>🌎 <strong>Country Code</strong></li>
+<li>🧭 <strong>IP Type</strong> — Public / Private / Reserved</li>
+<li>📶 <strong>IP Ranges for ASN</strong></li>
 </ul>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>⚡ Fast and works <strong>offline</strong> after initial DB download</li>
+<li>🔄 Auto-updates the enrichment database</li>
+<li>💻 Simple and intuitive <strong>Python API &amp; CLI</strong></li>
+<li>🧪 Fully tested, clean, and modular codebase</li>
+<li>📦 Easy to install via <code>pip</code></li>
+</ul>
+<h3 id="installation">🔧 Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ipatel
+</code></pre></div>
+
+<h2 id="command-line-interface-cli">Command Line Interface (CLI)<a class="headerlink" href="#command-line-interface-cli" title="Permanent link">&para;</a></h2>
+<p><code>ipatel</code> also includes a built-in CLI tool that allows you to enrich IPs and fetch ASN data directly from the terminal.</p>
+<h3 id="basic-syntax">Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>ipatel<span class="w"> </span><span class="o">[</span>-i<span class="w"> </span>IP_ADDRESS<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="w"> </span>ASN<span class="o">]</span><span class="w"> </span><span class="o">[</span>--update-db<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+</code></pre></div>
+
+<h3 id="available-flags">Available Flags<a class="headerlink" href="#available-flags" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i</code>, <code>--ip</code></td>
+<td>Enrich the given IP address.</td>
+</tr>
+<tr>
+<td><code>-a</code>, <code>--asn</code></td>
+<td>Lookup IP ranges for the given ASN.</td>
+</tr>
+<tr>
+<td><code>--update-db</code></td>
+<td>Force re-download of the DB.</td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Show the installed version.</td>
+</tr>
+<tr>
+<td><code>-h</code>, <code>--help</code></td>
+<td>Show usage and help message.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quickstart-guide">Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permanent link">&para;</a></h2>
+<h2 id="basic-setup">Basic Setup<a class="headerlink" href="#basic-setup" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ipatel</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ip</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Let&#39;s declare ip and asn here, to check the quick functionality</span>
+<span class="n">test_ip</span> <span class="o">=</span> <span class="s2">&quot;8.8.8.8&quot;</span>
+<span class="n">test_asn</span> <span class="o">=</span> <span class="mi">15169</span>
+</code></pre></div>
+
+<h2 id="ip-enrichment">IP Enrichment<a class="headerlink" href="#ip-enrichment" title="Permanent link">&para;</a></h2>
+<h3 id="enrich-ip-with-full-metadata">🔹 Enrich IP with full metadata<a class="headerlink" href="#enrich-ip-with-full-metadata" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Returns:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;8.8.8.8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;asn&#39;</span><span class="p">:</span> <span class="mi">15169</span><span class="p">,</span>
+    <span class="s1">&#39;country_code&#39;</span><span class="p">:</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;GOOGLE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ip_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Public&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="asn-lookup-functions">ASN Lookup Functions<a class="headerlink" href="#asn-lookup-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ip.get_record(ip)</code></td>
+<td>Full ASN record</td>
+<td><code>ip.get_record("8.8.8.8")</code></td>
+</tr>
+<tr>
+<td><code>ip.get_asn(ip)</code></td>
+<td>Get ASN only</td>
+<td><code>15169</code></td>
+</tr>
+<tr>
+<td><code>ip.get_country_code(ip)</code></td>
+<td>Get country code</td>
+<td><code>"US"</code></td>
+</tr>
+<tr>
+<td><code>ip.get_owner(ip)</code></td>
+<td>Get AS owner</td>
+<td><code>"GOOGLE"</code></td>
+</tr>
+<tr>
+<td><code>ip.get_ip_ranges_for_asn(asn)</code></td>
+<td>List of IP ranges for ASN</td>
+<td><code>ip.get_ip_ranges_for_asn(15169)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ip.ip_to_int("8.8.8.8")</code></td>
+<td>IP → Integer</td>
+<td><code>134744072</code></td>
+</tr>
+<tr>
+<td><code>ip.int_to_ip(134744072)</code></td>
+<td>Integer → IP</td>
+<td><code>"8.8.8.8"</code></td>
+</tr>
+<tr>
+<td><code>ip.get_ip_type("127.0.0.1")</code></td>
+<td>Detect IP type</td>
+<td><code>"Loopback"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="database-management">Database Management<a class="headerlink" href="#database-management" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Download DB</td>
+<td><code>ip.download_ip2asn_db()</code></td>
+<td>Manually fetch latest DB</td>
+</tr>
+<tr>
+<td>Ensure Fresh DB</td>
+<td><code>ip.ensure_ip2asn_db()</code></td>
+<td>Checks &amp; auto-downloads if outdated</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
@@ -142,5 +335,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-06-22 13:50:35.585713+00:00
+Build Date UTC : 2025-06-22 14:35:12.999930+00:00
 -->

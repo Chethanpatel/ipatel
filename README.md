@@ -112,7 +112,4 @@ ip.enrich_ip("8.8.8.8")
 
 ## 📚 Learn More
 
-* 📌 [CLI Usage](docs/cli.md)
-* 🧾 [Detailed API Reference](docs/api.md)
-* 🔁 [Database Update Guide](docs/update.md)
 * 📂 [GitHub Repository](https://github.com/Chethanpatel/ipatel)

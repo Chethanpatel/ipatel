@@ -121,9 +121,9 @@ if __name__ == "__main__":
 
 ## 📚 Learn More
 
-* 📌 [CLI Usage](docs/cli.md)
-* 🧾 [Detailed API Reference](docs/api.md)
-* 🔁 [Database Update Guide](docs/update.md)
+* 📌 [CLI Usage](cli.md)
+* 🧾 [Detailed API Reference](api.md)
+* 🔁 [Database Update Guide](update.md)
 * 📂 [GitHub Repository](https://github.com/Chethanpatel/ipatel)
 
 ---
