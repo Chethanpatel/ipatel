@@ -1,37 +1,56 @@
-# 🚀 Quickstart Guide
-
-Welcome to **IPATEL** — a fast and lightweight IP enrichment library.
-
-This guide shows how to quickly get started with importing the library and using all core functions.
+# 🌐 `ipatel` — IP Enrichment Library & CLI
 
 ---
 
-## 📦 Installation
+## 🔍 What is `ipatel`?
+
+**`ipatel`** is a lightweight Python library and CLI tool that enriches IP addresses and ASNs with useful metadata:
+
+* 🛰️ **ASN (Autonomous System Number)**
+* 🏢 **AS Owner / Organization**
+* 🌎 **Country Code**
+* 🧭 **IP Type** — Public / Private / Reserved
+* 📶 **IP Ranges for ASN**
+
+---
+
+## ✨ Key Features
+
+* ⚡ Fast and works **offline** after initial DB download
+* 🔄 Auto-updates the enrichment database
+* 💻 Simple and intuitive **Python API & CLI**
+* 🧪 Fully tested, clean, and modular codebase
+* 📦 Easy to install via `pip`
+
+---
+
+## 🚀 Quickstart Guide
+
+### 🔧 Installation
 
 ```bash
 pip install ipatel
-````
+```
 
 ---
 
-## ✨ Basic Usage
+## 🧩 Basic Setup
 
 ```python
 import ipatel as ip
 
-# Sample test inputs
 test_ip = "8.8.8.8"
 test_asn = 15169
 ```
 
 ---
 
-## 🔍 IP Enrichment
+## 🌐 IP Enrichment
 
-### Enrich an IP address with all available fields:
+### 🔹 Enrich IP with full metadata
 
 ```python
-ip.enrich_ip(test_ip)
+ip.enrich_ip("8.8.8.8")
 ```
 
 **Returns:**
@@ -48,81 +67,38 @@ ip.enrich_ip(test_ip)
 
 ---
 
-## 🧠 ASN Lookups
+## 🧠 ASN Lookup Functions
 
-### Get ASN record (raw dict):
-
-```python
-ip.get_record(test_ip)
-```
-
-### Get ASN number:
-
-```python
-ip.get_asn(test_ip)  # ➝ 15169
-```
-
-### Get country code:
-
-```python
-ip.get_country_code(test_ip)  # ➝ "US"
-```
-
-### Get AS owner/organization:
-
-```python
-ip.get_owner(test_ip)  # ➝ "GOOGLE"
-```
-
-### Get all IP ranges owned by an ASN:
-
-```python
-ip.get_ip_ranges_for_asn(test_asn)
-```
+| Function                        | Description               | Example                           |
+| ------------------------------- | ------------------------- | --------------------------------- |
+| `ip.get_record(ip)`             | Full ASN record           | `ip.get_record("8.8.8.8")`        |
+| `ip.get_asn(ip)`                | Get ASN only              | `15169`                           |
+| `ip.get_country_code(ip)`       | Get country code          | `"US"`                            |
+| `ip.get_owner(ip)`              | Get AS owner              | `"GOOGLE"`                        |
+| `ip.get_ip_ranges_for_asn(asn)` | List of IP ranges for ASN | `ip.get_ip_ranges_for_asn(15169)` |
 
 ---
 
 ## 🛠️ Utilities
 
-### Convert IP to integer:
-
-```python
-ip.ip_to_int("8.8.8.8")  # ➝ 134744072
-```
-
-### Convert integer to IP:
-
-```python
-ip.int_to_ip(134744072)  # ➝ "8.8.8.8"
-```
-
-### Detect IP type (public/private/reserved):
-
-```python
-ip.get_ip_type("127.0.0.1")  # ➝ "Loopback"
-```
+| Function                      | Description    | Output       |
+| ----------------------------- | -------------- | ------------ |
+| `ip.ip_to_int("8.8.8.8")`     | IP → Integer   | `134744072`  |
+| `ip.int_to_ip(134744072)`     | Integer → IP   | `"8.8.8.8"`  |
+| `ip.get_ip_type("127.0.0.1")` | Detect IP type | `"Loopback"` |
 
 ---
 
-## 🔄 Database Handling
+## 🔄 Database Management
 
-### Download the latest IP-to-ASN database:
-
-```python
-ip.download_ip2asn_db()
-```
-
-### Ensure local DB is fresh:
-
-```python
-ip.ensure_ip2asn_db()
-```
+| Task               | Function                  | Description                         |
+| ------------------ | ------------------------- | ----------------------------------- |
+| 📥 Download DB     | `ip.download_ip2asn_db()` | Manually fetch latest DB            |
+| 🔁 Ensure Fresh DB | `ip.ensure_ip2asn_db()`   | Checks & auto-downloads if outdated |
 
 ---
 
-## 🧪 Full Test Script
-
-You can try this all together:
+## 🧪 Test Script
 
 ```python
 def run_tests():
@@ -137,16 +113,17 @@ if __name__ == "__main__":
 
 ## 📝 Notes
 
-* All functions are safe for both IPv4 inputs.
-* Private, reserved, and loopback IPs are handled gracefully.
+* IPv4 only (IPv6 support planned)
+* Handles loopback, private, and reserved IPs safely
+* CLI and API produce consistent outputs
 
 ---
 
-## 📚 See Also
+## 📚 Learn More
 
-* [CLI Usage](cli.md)
-* [Detailed API](api.md)
-* [DB Upadte](update.md)
-* [Project Repo](https://github.com/Chethanpatel/ipatel)
+* 📌 [CLI Usage](docs/cli.md)
+* 🧾 [Detailed API Reference](docs/api.md)
+* 🔁 [Database Update Guide](docs/update.md)
+* 📂 [GitHub Repository](https://github.com/Chethanpatel/ipatel)
 
-
+---
