@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Chethanpatel.github.io/ipenrich/api/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API - ipenrich</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = "/ipenrich/api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ipenrich
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">ipenrich</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-enrich-an-ip-address">1. Enrich an IP Address</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-description">1.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-api">1.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-example">1.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-get-raw-asn-record">2. Get Raw ASN Record</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-description">2.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-api">2.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23-example">2.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-get-asn-number">3. Get ASN Number</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-description">3.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-api">3.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-example">3.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-get-country-code">4. Get Country Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-description">4.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#42-api">4.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-example">4.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-get-owner-as-description">5. Get Owner / AS Description</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#51-description">5.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#52-api">5.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#53-example">5.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-get-ip-ranges-for-asn">6. Get IP Ranges for ASN</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#61-description">6.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#62-api">6.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#63-example">6.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-force-download-database">7. Force Download Database</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#71-description">7.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#72-api">7.2 API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#73-example">7.3 Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-ensure-local-database-is-fresh">8. Ensure Local Database is Fresh</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#81-description">8.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#82-api">8.2 API</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-command-line-interface-cli">9. Command Line Interface (CLI)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#91-description">9.1 Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#92-commands">9.2 Commands</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-dependencies">10. Dependencies</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#101-required">10.1 Required</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../update/">Updating the Database</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ipenrich</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Chethanpatel/ipenrich/edit/master/docs/api.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<p><code>ipenrich</code> is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:</p>
+<ul>
+<li>ASN (Autonomous System Number)</li>
+<li>Owner / AS Description</li>
+<li>Country Code</li>
+<li>IP Type (Public / Private / Invalid)</li>
+<li>IP Ranges associated with ASNs</li>
+</ul>
+<p>It works offline after downloading a one-time IP-to-ASN mapping database and offers both programmatic and command-line interfaces.</p>
+<hr />
+<h2 id="1-enrich-an-ip-address">1. Enrich an IP Address<a class="headerlink" href="#1-enrich-an-ip-address" title="Permanent link">&para;</a></h2>
+<h4 id="11-description">1.1 Description<a class="headerlink" href="#11-description" title="Permanent link">&para;</a></h4>
+<p>Enrich a public IP address with detailed metadata including ASN, country, owner, and whether it is public or private.</p>
+<h4 id="12-api">1.2 API<a class="headerlink" href="#12-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">enrich</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</code></pre></div>
+
+<h4 id="13-example">1.3 Example<a class="headerlink" href="#13-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.enrich</span><span class="w"> </span><span class="kn">import</span> <span class="n">enrich_ip</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">enrich_ip</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;8.8.8.8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;asn&quot;</span><span class="p">:</span> <span class="mi">15169</span><span class="p">,</span>
+    <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;GOOGLE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;public&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h2 id="2-get-raw-asn-record">2. Get Raw ASN Record<a class="headerlink" href="#2-get-raw-asn-record" title="Permanent link">&para;</a></h2>
+<h4 id="21-description">2.1 Description<a class="headerlink" href="#21-description" title="Permanent link">&para;</a></h4>
+<p>Fetch the raw record for an IP from the IP-to-ASN database.</p>
+<h4 id="22-api">2.2 API<a class="headerlink" href="#22-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_record</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</code></pre></div>
+
+<h4 id="23-example">2.3 Example<a class="headerlink" href="#23-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_record</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">get_record</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;asn&quot;</span><span class="p">:</span> <span class="mi">15169</span><span class="p">,</span>
+    <span class="s2">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;GOOGLE&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h2 id="3-get-asn-number">3. Get ASN Number<a class="headerlink" href="#3-get-asn-number" title="Permanent link">&para;</a></h2>
+<h4 id="31-description">3.1 Description<a class="headerlink" href="#31-description" title="Permanent link">&para;</a></h4>
+<p>Return the ASN number for a given IP address.</p>
+<h4 id="32-api">3.2 API<a class="headerlink" href="#32-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_asn</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+<h4 id="33-example">3.3 Example<a class="headerlink" href="#33-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_asn</span>
+
+<span class="n">get_asn</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ 15169</span>
+</code></pre></div>
+
+<hr />
+<h2 id="4-get-country-code">4. Get Country Code<a class="headerlink" href="#4-get-country-code" title="Permanent link">&para;</a></h2>
+<h4 id="41-description">4.1 Description<a class="headerlink" href="#41-description" title="Permanent link">&para;</a></h4>
+<p>Returns the 2-letter ISO country code for a given IP address.</p>
+<h4 id="42-api">4.2 API<a class="headerlink" href="#42-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_country_code</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div>
+
+<h4 id="43-example">4.3 Example<a class="headerlink" href="#43-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_country_code</span>
+
+<span class="n">get_country_code</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ &#39;US&#39;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="5-get-owner-as-description">5. Get Owner / AS Description<a class="headerlink" href="#5-get-owner-as-description" title="Permanent link">&para;</a></h2>
+<h4 id="51-description">5.1 Description<a class="headerlink" href="#51-description" title="Permanent link">&para;</a></h4>
+<p>Return the organization or description (owner) of the ASN associated with an IP.</p>
+<h4 id="52-api">5.2 API<a class="headerlink" href="#52-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_owner</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+
+<h4 id="53-example">5.3 Example<a class="headerlink" href="#53-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_owner</span>
+
+<span class="n">get_owner</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ &#39;GOOGLE&#39;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="6-get-ip-ranges-for-asn">6. Get IP Ranges for ASN<a class="headerlink" href="#6-get-ip-ranges-for-asn" title="Permanent link">&para;</a></h2>
+<h4 id="61-description">6.1 Description<a class="headerlink" href="#61-description" title="Permanent link">&para;</a></h4>
+<p>Given an ASN, return:</p>
+<ul>
+<li>ASN number</li>
+<li>Owner</li>
+<li>Country code</li>
+<li>All IP ranges associated with that ASN</li>
+</ul>
+<h4 id="62-api">6.2 API<a class="headerlink" href="#62-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="n">asn</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</code></pre></div>
+
+<h4 id="63-example">6.3 Example<a class="headerlink" href="#63-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_ip_ranges_for_asn</span>
+
+<span class="n">info</span> <span class="o">=</span> <span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="mi">15169</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Output:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;asn&quot;</span><span class="p">:</span> <span class="mi">15169</span><span class="p">,</span>
+    <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;GOOGLE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ip_ranges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;8.8.4.0&quot;</span><span class="p">,</span> <span class="s2">&quot;8.8.4.255&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;8.8.8.0&quot;</span><span class="p">,</span> <span class="s2">&quot;8.8.8.255&quot;</span><span class="p">),</span>
+        <span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h2 id="7-force-download-database">7. Force Download Database<a class="headerlink" href="#7-force-download-database" title="Permanent link">&para;</a></h2>
+<h4 id="71-description">7.1 Description<a class="headerlink" href="#71-description" title="Permanent link">&para;</a></h4>
+<p>Manually download the latest IP-to-ASN database from <a href="https://iptoasn.com">iptoasn.com</a>.
+This is usually handled automatically.</p>
+<h4 id="72-api">7.2 API<a class="headerlink" href="#72-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">download_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+<h4 id="73-example">7.3 Example<a class="headerlink" href="#73-example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_ip2asn_db</span>
+
+<span class="n">download_ip2asn_db</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2 id="8-ensure-local-database-is-fresh">8. Ensure Local Database is Fresh<a class="headerlink" href="#8-ensure-local-database-is-fresh" title="Permanent link">&para;</a></h2>
+<h4 id="81-description">8.1 Description<a class="headerlink" href="#81-description" title="Permanent link">&para;</a></h4>
+<p>Check if the local database is fresh (within 7 days); otherwise, trigger a warning or update.</p>
+<h4 id="82-api">8.2 API<a class="headerlink" href="#82-api" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">ensure_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+<hr />
+<h2 id="9-command-line-interface-cli">9. Command Line Interface (CLI)<a class="headerlink" href="#9-command-line-interface-cli" title="Permanent link">&para;</a></h2>
+<h4 id="91-description">9.1 Description<a class="headerlink" href="#91-description" title="Permanent link">&para;</a></h4>
+<p>After installation, use <code>ipenrich</code> from your terminal to enrich IPs or fetch ASN data.</p>
+<h4 id="92-commands">9.2 Commands<a class="headerlink" href="#92-commands" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>ipenrich<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w">         </span><span class="c1"># Enrich an IP</span>
+ipenrich<span class="w"> </span>-a<span class="w"> </span><span class="m">15169</span><span class="w">           </span><span class="c1"># Lookup ASN details</span>
+ipenrich<span class="w"> </span>--update-db<span class="w">        </span><span class="c1"># Manually update the database</span>
+ipenrich<span class="w"> </span>--version<span class="w">          </span><span class="c1"># Show current version</span>
+ipenrich<span class="w"> </span>-h<span class="w">                 </span><span class="c1"># Show help and usage</span>
+</code></pre></div>
+
+<hr />
+<h2 id="10-dependencies">10. Dependencies<a class="headerlink" href="#10-dependencies" title="Permanent link">&para;</a></h2>
+<h4 id="101-required">10.1 Required<a class="headerlink" href="#101-required" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>rich</code> — Beautiful CLI formatting</li>
+<li><code>argparse</code> — Command-line parser</li>
+<li>
+<p>Standard library:</p>
+</li>
+<li>
+<p><code>pathlib</code></p>
+</li>
+<li><code>ipaddress</code></li>
+<li><code>urllib</code></li>
+<li><code>gzip</code></li>
+<li><code>shutil</code></li>
+</ul>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="ipenrich"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli/" class="btn btn-neutral float-right" title="CLI">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Chethanpatel/ipenrich" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
