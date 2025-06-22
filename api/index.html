@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Chethanpatel.github.io/ipenrich/api/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Chethanpatel.github.io/ipatel/api/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>API - ipenrich</title>
+    <title>API - ipatel</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "API";
         var mkdocs_page_input_path = "api.md";
-        var mkdocs_page_url = "/ipenrich/api/";
+        var mkdocs_page_url = "/ipatel/api/";
       </script>
     
     <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> ipenrich
+          <a href=".." class="icon icon-home"> ipatel
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -40,7 +40,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">ipenrich</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">ipatel</a>
                 </li>
               </ul>
               <ul class="current">
@@ -156,7 +156,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">ipenrich</a>
+          <a href="..">ipatel</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -165,7 +165,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">API</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/Chethanpatel/ipenrich/edit/master/docs/api.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/Chethanpatel/ipatel/edit/master/docs/api.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -174,7 +174,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
-<p><code>ipenrich</code> is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:</p>
+<p><code>ipatel</code> is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:</p>
 <ul>
 <li>ASN (Autonomous System Number)</li>
 <li>Owner / AS Description</li>
@@ -188,11 +188,11 @@
 <h4 id="11-description">1.1 Description<a class="headerlink" href="#11-description" title="Permanent link">&para;</a></h4>
 <p>Enrich a public IP address with detailed metadata including ASN, country, owner, and whether it is public or private.</p>
 <h4 id="12-api">1.2 API<a class="headerlink" href="#12-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">enrich</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">enrich</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </code></pre></div>
 
 <h4 id="13-example">1.3 Example<a class="headerlink" href="#13-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.enrich</span><span class="w"> </span><span class="kn">import</span> <span class="n">enrich_ip</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.enrich</span><span class="w"> </span><span class="kn">import</span> <span class="n">enrich_ip</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">enrich_ip</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -213,11 +213,11 @@
 <h4 id="21-description">2.1 Description<a class="headerlink" href="#21-description" title="Permanent link">&para;</a></h4>
 <p>Fetch the raw record for an IP from the IP-to-ASN database.</p>
 <h4 id="22-api">2.2 API<a class="headerlink" href="#22-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_record</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_record</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </code></pre></div>
 
 <h4 id="23-example">2.3 Example<a class="headerlink" href="#23-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_record</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_record</span>
 
 <span class="n">record</span> <span class="o">=</span> <span class="n">get_record</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
@@ -236,11 +236,11 @@
 <h4 id="31-description">3.1 Description<a class="headerlink" href="#31-description" title="Permanent link">&para;</a></h4>
 <p>Return the ASN number for a given IP address.</p>
 <h4 id="32-api">3.2 API<a class="headerlink" href="#32-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_asn</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_asn</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
 
 <h4 id="33-example">3.3 Example<a class="headerlink" href="#33-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_asn</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_asn</span>
 
 <span class="n">get_asn</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ 15169</span>
 </code></pre></div>
@@ -250,11 +250,11 @@
 <h4 id="41-description">4.1 Description<a class="headerlink" href="#41-description" title="Permanent link">&para;</a></h4>
 <p>Returns the 2-letter ISO country code for a given IP address.</p>
 <h4 id="42-api">4.2 API<a class="headerlink" href="#42-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_country_code</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_country_code</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
 
 <h4 id="43-example">4.3 Example<a class="headerlink" href="#43-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_country_code</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_country_code</span>
 
 <span class="n">get_country_code</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ &#39;US&#39;</span>
 </code></pre></div>
@@ -264,11 +264,11 @@
 <h4 id="51-description">5.1 Description<a class="headerlink" href="#51-description" title="Permanent link">&para;</a></h4>
 <p>Return the organization or description (owner) of the ASN associated with an IP.</p>
 <h4 id="52-api">5.2 API<a class="headerlink" href="#52-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_owner</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_owner</span><span class="p">(</span><span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
 
 <h4 id="53-example">5.3 Example<a class="headerlink" href="#53-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_owner</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_owner</span>
 
 <span class="n">get_owner</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➜ &#39;GOOGLE&#39;</span>
 </code></pre></div>
@@ -284,11 +284,11 @@
 <li>All IP ranges associated with that ASN</li>
 </ul>
 <h4 id="62-api">6.2 API<a class="headerlink" href="#62-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="n">asn</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="n">asn</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </code></pre></div>
 
 <h4 id="63-example">6.3 Example<a class="headerlink" href="#63-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_ip_ranges_for_asn</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_ip_ranges_for_asn</span>
 
 <span class="n">info</span> <span class="o">=</span> <span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="mi">15169</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
@@ -313,11 +313,11 @@
 <p>Manually download the latest IP-to-ASN database from <a href="https://iptoasn.com">iptoasn.com</a>.
 This is usually handled automatically.</p>
 <h4 id="72-api">7.2 API<a class="headerlink" href="#72-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">download_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">download_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
 <h4 id="73-example">7.3 Example<a class="headerlink" href="#73-example" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipenrich.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_ip2asn_db</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ipatel.asn</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_ip2asn_db</span>
 
 <span class="n">download_ip2asn_db</span><span class="p">()</span>
 </code></pre></div>
@@ -327,19 +327,19 @@ This is usually handled automatically.</p>
 <h4 id="81-description">8.1 Description<a class="headerlink" href="#81-description" title="Permanent link">&para;</a></h4>
 <p>Check if the local database is fresh (within 7 days); otherwise, trigger a warning or update.</p>
 <h4 id="82-api">8.2 API<a class="headerlink" href="#82-api" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="n">ipenrich</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">ensure_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="codehilite"><pre><span></span><code><span class="n">ipatel</span><span class="o">.</span><span class="n">asn</span><span class="o">.</span><span class="n">ensure_ip2asn_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
 <hr />
 <h2 id="9-command-line-interface-cli">9. Command Line Interface (CLI)<a class="headerlink" href="#9-command-line-interface-cli" title="Permanent link">&para;</a></h2>
 <h4 id="91-description">9.1 Description<a class="headerlink" href="#91-description" title="Permanent link">&para;</a></h4>
-<p>After installation, use <code>ipenrich</code> from your terminal to enrich IPs or fetch ASN data.</p>
+<p>After installation, use <code>ipatel</code> from your terminal to enrich IPs or fetch ASN data.</p>
 <h4 id="92-commands">9.2 Commands<a class="headerlink" href="#92-commands" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>ipenrich<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w">         </span><span class="c1"># Enrich an IP</span>
-ipenrich<span class="w"> </span>-a<span class="w"> </span><span class="m">15169</span><span class="w">           </span><span class="c1"># Lookup ASN details</span>
-ipenrich<span class="w"> </span>--update-db<span class="w">        </span><span class="c1"># Manually update the database</span>
-ipenrich<span class="w"> </span>--version<span class="w">          </span><span class="c1"># Show current version</span>
-ipenrich<span class="w"> </span>-h<span class="w">                 </span><span class="c1"># Show help and usage</span>
+<div class="codehilite"><pre><span></span><code>ipatel<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w">         </span><span class="c1"># Enrich an IP</span>
+ipatel<span class="w"> </span>-a<span class="w"> </span><span class="m">15169</span><span class="w">           </span><span class="c1"># Lookup ASN details</span>
+ipatel<span class="w"> </span>--update-db<span class="w">        </span><span class="c1"># Manually update the database</span>
+ipatel<span class="w"> </span>--version<span class="w">          </span><span class="c1"># Show current version</span>
+ipatel<span class="w"> </span>-h<span class="w">                 </span><span class="c1"># Show help and usage</span>
 </code></pre></div>
 
 <hr />
@@ -364,7 +364,7 @@ ipenrich<span class="w"> </span>-h<span class="w">                 </span><span 
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="ipenrich"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="ipatel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../cli/" class="btn btn-neutral float-right" title="CLI">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -388,7 +388,7 @@ ipenrich<span class="w"> </span>-h<span class="w">                 </span><span 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/Chethanpatel/ipenrich" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/Chethanpatel/ipatel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
     
