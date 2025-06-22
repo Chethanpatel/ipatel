@@ -15,7 +15,7 @@ def handle_ip_lookup(ip: str):
 
     banner = Panel.fit(
         "[bold cyan]IP Enrichment[/bold cyan]",
-        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipenrich[/blue]",
         border_style="cyan"
     )
     console.print(banner)
@@ -28,14 +28,14 @@ def handle_ip_lookup(ip: str):
         table.add_row(key, str(value))
 
     console.print(table)
-    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/chethanpatel/ipenrich[/blue]")
+    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/Chethanpatel/ipenrich[/blue]")
 
 def handle_asn_lookup(asn: int):
     result = get_ip_ranges_for_asn(asn)
 
     banner = Panel.fit(
         f"[bold cyan]ASN Lookup: {asn}[/bold cyan]",
-        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipenrich[/blue]",
         border_style="cyan"
     )
     console.print(banner)
@@ -54,7 +54,7 @@ def handle_asn_lookup(asn: int):
         table.add_row(start, end)
 
     console.print(table)
-    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/chethanpatel/ipenrich[/blue]")
+    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/Chethanpatel/ipenrich[/blue]")
 
 def main():
     parser = argparse.ArgumentParser(description="IP and ASN Enrichment CLI", add_help=False)
@@ -73,7 +73,7 @@ def main():
 
     if args.help:
         banner = Panel.fit(
-            f"[bold cyan]ipenrich CLI[/bold cyan] [magenta]v{VERSION}[/magenta]\n[green]by Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+            f"[bold cyan]ipenrich CLI[/bold cyan] [magenta]v{VERSION}[/magenta]\n[green]by Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipenrich[/blue]",
             border_style="cyan"
         )
         console.print(banner)
@@ -131,7 +131,7 @@ def main():
     else:
         banner = Panel.fit(
             "[bold cyan]ipenrich CLI[/bold cyan]",
-            subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+            subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipenrich[/blue]",
             border_style="cyan"
         )
         console.print(banner)
