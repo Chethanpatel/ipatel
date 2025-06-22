@@ -4,6 +4,7 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
+from rich.box import SIMPLE_HEAVY
 from ipenrich.enrich import enrich_ip
 from ipenrich.asn import get_ip_ranges_for_asn
 
@@ -12,14 +13,26 @@ console = Console()
 def handle_ip_lookup(ip: str):
     result = enrich_ip(ip)
 
-    table = Table(title="IP Enrichment", show_header=True, header_style="bold green")
-    table.add_column("Field", style="dim")
-    table.add_column("Value")
+    panel = Panel.fit(
+        "[bold cyan]IP Enrichment[/bold cyan]\n[green]by Chethan Patel · https://github.com/Chethanpatel/ipenrich[/green]",
+        border_style="cyan"
+    )
+    console.print(panel)
+
+    table = Table(
+        show_header=True,
+        header_style="bold green",
+        box=SIMPLE_HEAVY,
+        expand=False
+    )
+    table.add_column("Field", style="bold yellow")
+    table.add_column("Value", style="magenta")
 
     for key, value in result.items():
         table.add_row(key, str(value))
 
     console.print(table)
+    console.print("⭐ [yellow]Star this tool:[/yellow] [bold blue]https://github.com/Chethanpatel/ipenrich[/bold blue]\n")
 
 def handle_asn_lookup(asn: int):
     result = get_ip_ranges_for_asn(asn)
@@ -28,16 +41,35 @@ def handle_asn_lookup(asn: int):
         console.print(f"[red]No entries found for ASN {asn}[/red]")
         return
 
-    console.print(Panel(f"[bold blue]ASN {asn}[/bold blue]\n[bold]Owner:[/bold] {result['owner']}\n[bold]Country:[/bold] {result['country_code']}"))
+    panel = Panel.fit(
+        f"[bold cyan]ASN {asn} Enrichment[/bold cyan]\n[green]by Chethan Patel · https://github.com/Chethanpatel/ipenrich[/green]",
+        border_style="cyan"
+    )
+    console.print(panel)
 
-    table = Table(title="IP Ranges", show_header=True, header_style="bold green")
-    table.add_column("Start IP")
-    table.add_column("End IP")
+    info_table = Table(
+        show_header=True,
+        header_style="bold green",
+        box=SIMPLE_HEAVY
+    )
+    info_table.add_column("Field", style="bold yellow")
+    info_table.add_column("Value", style="magenta")
+
+    info_table.add_row("asn", str(result["asn"]))
+    info_table.add_row("owner", result["owner"] or "-")
+    info_table.add_row("country_code", result["country_code"] or "-")
+
+    console.print(info_table)
+
+    ip_table = Table(title="IP Ranges", show_header=True, header_style="bold green", box=SIMPLE_HEAVY)
+    ip_table.add_column("Start IP", style="cyan")
+    ip_table.add_column("End IP", style="cyan")
 
     for start, end in result["ip_ranges"]:
-        table.add_row(start, end)
+        ip_table.add_row(start, end)
 
-    console.print(table)
+    console.print(ip_table)
+    console.print("⭐ [yellow]Star this tool:[/yellow] [bold blue]https://github.com/Chethanpatel/ipenrich[/bold blue]\n")
 
 def main():
     parser = argparse.ArgumentParser(description="IP and ASN Enrichment CLI")
