@@ -1,7 +1,7 @@
 import ipaddress
 from pathlib import Path
 
-CACHE_DIR = Path.home() / ".cache" / "ipenrich"
+CACHE_DIR = Path.home() / ".cache" / "ipatel"
 
 def get_ip_type(ip: str) -> str:
     """

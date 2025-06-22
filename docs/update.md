@@ -1,6 +1,6 @@
 # Updating the Database
 
-`ipenrich` relies on a local copy of the IP-to-ASN database to provide fast and offline enrichment. This section describes how the database is managed and how you can update it manually or programmatically.
+`ipatel` relies on a local copy of the IP-to-ASN database to provide fast and offline enrichment. This section describes how the database is managed and how you can update it manually or programmatically.
 
 ---
 
@@ -16,7 +16,7 @@ The IP-to-ASN mapping data changes frequently as networks evolve. Keeping the lo
 
 ## 2. One-Time Auto Download
 
-When you run any `ipenrich` command for the **first time**, it will automatically:
+When you run any `ipatel` command for the **first time**, it will automatically:
 
 * Download the latest `ip2asn-v4.tsv.gz` file from [iptoasn.com](https://iptoasn.com)
 * Extract and cache it locally for fast lookups
@@ -32,7 +32,7 @@ You can manually refresh the database anytime using the CLI:
 ### 3.1 Command
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 ### 3.2 What It Does
@@ -45,7 +45,7 @@ ipenrich --update-db
 
 ## 4. Auto-Refresh Logic
 
-On every usage, `ipenrich` checks:
+On every usage, `ipatel` checks:
 
 * If the local database exists
 * If the file is older than **7 days**
@@ -53,7 +53,7 @@ On every usage, `ipenrich` checks:
 If the data is outdated, a warning will be printed suggesting you to run:
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 This helps you stay current without automatic background downloads.
@@ -67,7 +67,7 @@ You can also trigger a database update from Python code.
 ### 5.1 Code Snippet
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -81,7 +81,7 @@ This is useful when integrating into scripts or scheduled jobs (e.g., cron).
 The database is stored locally in a cache directory like:
 
 ```bash
-~/.cache/ipenrich/ip2asn-v4.tsv
+~/.cache/ipatel/ip2asn-v4.tsv
 ```
 
 You do **not** need to manage this path manually unless doing advanced customizations.
@@ -92,7 +92,7 @@ You do **not** need to manage this path manually unless doing advanced customiza
 
 * If download fails, check your internet connection.
 * You can delete the cache file to force a fresh download.
-* If `ipenrich` doesn't recognize an IP, it's possible the DB is outdated — try updating it.
+* If `ipatel` doesn't recognize an IP, it's possible the DB is outdated — try updating it.
 
 ---
 

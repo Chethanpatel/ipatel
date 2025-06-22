@@ -1,6 +1,6 @@
 # CLI
 
-`ipenrich` includes a built-in CLI tool that allows you to enrich IPs and fetch ASN data directly from the terminal.
+`ipatel` includes a built-in CLI tool that allows you to enrich IPs and fetch ASN data directly from the terminal.
 
 ## 11. Command Line Interface (CLI) 
 
@@ -9,7 +9,7 @@
 ### 11.1 Basic Syntax
 
 ```bash
-ipenrich [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
+ipatel [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
 ```
 
 ---
@@ -31,7 +31,7 @@ ipenrich [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
 ###### 11.3.1 Enrich an IP Address
 
 ```bash
-ipenrich -i 8.8.8.8
+ipatel -i 8.8.8.8
 ```
 
 Returns:
@@ -49,7 +49,7 @@ Type    : public
 ###### 11.3.2 Lookup ASN Information
 
 ```bash
-ipenrich -a 15169
+ipatel -a 15169
 ```
 
 Returns:
@@ -69,7 +69,7 @@ IP Ranges:
 ###### 11.3.3 Manually Update the Database
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 Downloads the latest IP-to-ASN dataset and replaces the local cache.
@@ -79,10 +79,10 @@ Downloads the latest IP-to-ASN dataset and replaces the local cache.
 ###### 11.3.4 Show Current Version
 
 ```bash
-ipenrich --version
+ipatel --version
 ```
 
-Prints the installed version of `ipenrich`.
+Prints the installed version of `ipatel`.
 
 ---
 
@@ -96,7 +96,7 @@ The tool uses a local database (`ip2asn-v4.tsv`) fetched from [iptoasn.com](http
 
 ###### 11.4.2 Auto-Download Behavior
 
-* When `ipenrich` is used for the first time, it automatically downloads the latest IP-to-ASN dataset.
+* When `ipatel` is used for the first time, it automatically downloads the latest IP-to-ASN dataset.
 * If the local copy is older than **7 days**, a prompt is shown to refresh.
 
 ---
@@ -106,7 +106,7 @@ The tool uses a local database (`ip2asn-v4.tsv`) fetched from [iptoasn.com](http
 You can also force an update manually:
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 This will:
@@ -122,7 +122,7 @@ This will:
 For advanced use cases or library integration, update the database manually via code:
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -133,6 +133,6 @@ download_ip2asn_db()
 
 For issues, feature requests, or contributions:
 
-🌐 [GitHub Repository](https://github.com/chethanpatel/ipenrich)
+🌐 [GitHub Repository](https://github.com/chethanpatel/ipatel)
 
 ---

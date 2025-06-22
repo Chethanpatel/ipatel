@@ -15,7 +15,7 @@ DB_PATH = CACHE_DIR / "ip2asn-v4.tsv"
 def download_file_with_headers(url: str, dest: Path):
     req = urllib.request.Request(
         url,
-        headers={"User-Agent": "Mozilla/5.0 (compatible; ipenrich/0.1.0)"}
+        headers={"User-Agent": "Mozilla/5.0 (compatible; ipatel/0.1.0)"}
     )
     with urllib.request.urlopen(req) as response, open(dest, "wb") as out_file:
         out_file.write(response.read())
@@ -47,7 +47,7 @@ def ensure_ip2asn_db():
     modified_time = datetime.fromtimestamp(DB_PATH.stat().st_mtime)
     if datetime.now() - modified_time > timedelta(days=7):
         print("⚠️  ip2asn data is older than 7 days.")
-        print("   Run `ipenrich-update` to refresh the database.")
+        print("   Run `ipatel-update` to refresh the database.")
 
 
 def get_record(ip: str) -> dict:

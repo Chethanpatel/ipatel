@@ -2,7 +2,7 @@ import subprocess
 
 def test_ip_lookup():
     result = subprocess.run(
-        ["ipenrich", "-i", "8.8.8.8"],
+        ["ipatel", "-i", "8.8.8.8"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -12,7 +12,7 @@ def test_ip_lookup():
 
 def test_asn_lookup():
     result = subprocess.run(
-        ["ipenrich", "-a", "15169"],
+        ["ipatel", "-a", "15169"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -22,7 +22,7 @@ def test_asn_lookup():
 
 def test_help_message():
     result = subprocess.run(
-        ["ipenrich"],
+        ["ipatel"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True

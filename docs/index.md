@@ -1,4 +1,4 @@
-# ipenrich
+# ipatel
 
 A fast IP and ASN enrichment tool that works offline after initial database download.
 

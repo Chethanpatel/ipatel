@@ -1,6 +1,6 @@
 # API
 
-`ipenrich` is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:
+`ipatel` is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:
 
 * ASN (Autonomous System Number)
 * Owner / AS Description
@@ -21,13 +21,13 @@ Enrich a public IP address with detailed metadata including ASN, country, owner,
 #### 1.2 API
 
 ```python
-ipenrich.enrich.enrich_ip(ip: str) -> dict
+ipatel.enrich.enrich_ip(ip: str) -> dict
 ```
 
 #### 1.3 Example
 
 ```python
-from ipenrich.enrich import enrich_ip
+from ipatel.enrich import enrich_ip
 
 result = enrich_ip("8.8.8.8")
 print(result)
@@ -56,13 +56,13 @@ Fetch the raw record for an IP from the IP-to-ASN database.
 #### 2.2 API
 
 ```python
-ipenrich.asn.get_record(ip: str) -> dict
+ipatel.asn.get_record(ip: str) -> dict
 ```
 
 #### 2.3 Example
 
 ```python
-from ipenrich.asn import get_record
+from ipatel.asn import get_record
 
 record = get_record("8.8.8.8")
 print(record)
@@ -89,13 +89,13 @@ Return the ASN number for a given IP address.
 #### 3.2 API
 
 ```python
-ipenrich.asn.get_asn(ip: str) -> int | None
+ipatel.asn.get_asn(ip: str) -> int | None
 ```
 
 #### 3.3 Example
 
 ```python
-from ipenrich.asn import get_asn
+from ipatel.asn import get_asn
 
 get_asn("8.8.8.8")  # ➜ 15169
 ```
@@ -111,13 +111,13 @@ Returns the 2-letter ISO country code for a given IP address.
 #### 4.2 API
 
 ```python
-ipenrich.asn.get_country_code(ip: str) -> str | None
+ipatel.asn.get_country_code(ip: str) -> str | None
 ```
 
 #### 4.3 Example
 
 ```python
-from ipenrich.asn import get_country_code
+from ipatel.asn import get_country_code
 
 get_country_code("8.8.8.8")  # ➜ 'US'
 ```
@@ -133,13 +133,13 @@ Return the organization or description (owner) of the ASN associated with an IP.
 #### 5.2 API
 
 ```python
-ipenrich.asn.get_owner(ip: str) -> str
+ipatel.asn.get_owner(ip: str) -> str
 ```
 
 #### 5.3 Example
 
 ```python
-from ipenrich.asn import get_owner
+from ipatel.asn import get_owner
 
 get_owner("8.8.8.8")  # ➜ 'GOOGLE'
 ```
@@ -160,13 +160,13 @@ Given an ASN, return:
 #### 6.2 API
 
 ```python
-ipenrich.asn.get_ip_ranges_for_asn(asn: int) -> dict
+ipatel.asn.get_ip_ranges_for_asn(asn: int) -> dict
 ```
 
 #### 6.3 Example
 
 ```python
-from ipenrich.asn import get_ip_ranges_for_asn
+from ipatel.asn import get_ip_ranges_for_asn
 
 info = get_ip_ranges_for_asn(15169)
 print(info)
@@ -199,13 +199,13 @@ This is usually handled automatically.
 #### 7.2 API
 
 ```python
-ipenrich.asn.download_ip2asn_db() -> None
+ipatel.asn.download_ip2asn_db() -> None
 ```
 
 #### 7.3 Example
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -221,7 +221,7 @@ Check if the local database is fresh (within 7 days); otherwise, trigger a warni
 #### 8.2 API
 
 ```python
-ipenrich.asn.ensure_ip2asn_db() -> None
+ipatel.asn.ensure_ip2asn_db() -> None
 ```
 
 ---
@@ -230,16 +230,16 @@ ipenrich.asn.ensure_ip2asn_db() -> None
 
 #### 9.1 Description
 
-After installation, use `ipenrich` from your terminal to enrich IPs or fetch ASN data.
+After installation, use `ipatel` from your terminal to enrich IPs or fetch ASN data.
 
 #### 9.2 Commands
 
 ```bash
-ipenrich -i 1.1.1.1         # Enrich an IP
-ipenrich -a 15169           # Lookup ASN details
-ipenrich --update-db        # Manually update the database
-ipenrich --version          # Show current version
-ipenrich -h                 # Show help and usage
+ipatel -i 1.1.1.1         # Enrich an IP
+ipatel -a 15169           # Lookup ASN details
+ipatel --update-db        # Manually update the database
+ipatel --version          # Show current version
+ipatel -h                 # Show help and usage
 ```
 
 ---
