@@ -1,0 +1,16 @@
+[project]
+name = "ipenrich"
+version = "0.1.0"
+description = "A Python IP enrichment library"
+authors = [{ name = "Chethan Patel", email = "chethanpatel100@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["rich"]
+
+[project.scripts]
+ipenrich = "ipenrich.cli:main"
+ipenrich-update = "ipenrich.scripts.update_db:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

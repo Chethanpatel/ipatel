@@ -1,0 +1,16 @@
+site_name: ipenrich
+repo_url: https://github.com/Chethanpatel/ipenrich
+site_url: https://Chethanpatel.github.io/ipenrich/
+theme:
+  name: readthedocs
+  user_color_mode_toggle: true
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
