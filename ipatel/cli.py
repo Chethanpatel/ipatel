@@ -4,17 +4,17 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from ipenrich.enrich import enrich_ip
-from ipenrich.asn import get_ip_ranges_for_asn, download_ip2asn_db
+from ipatel.enrich import enrich_ip
+from ipatel.asn import get_ip_ranges_for_asn, download_ip2asn_db
 
-from ipenrich import __version__ as VERSION
+from ipatel import __version__ as VERSION
 console = Console()
 
 def handle_ip_lookup(ip: str):
     result = enrich_ip(ip)
 
     banner = Panel.fit(
-        "[bold cyan]IP Enrichment[/bold cyan]",
+        "[bold cyan]IP Enrichment     [/bold cyan]",
         subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipenrich[/blue]",
         border_style="cyan"
     )
@@ -50,7 +50,8 @@ def handle_asn_lookup(asn: int):
     table.add_column("Start IP")
     table.add_column("End IP")
 
-    for start, end in result["ip_ranges"][:10]:  # Limit for readability
+    # for start, end in result["ip_ranges"][:10]:  # Limit for readability
+    for start, end in result["ip_ranges"]:  # Not Limit for readability    
         table.add_row(start, end)
 
     console.print(table)

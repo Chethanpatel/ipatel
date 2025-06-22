@@ -1,10 +1,10 @@
 import os
-from ipenrich.asn import (
+from ipatel.asn import (
     download_ip2asn_db,
     get_asn_info_for_ip,
     get_ip_ranges_for_asn,
 )
-from ipenrich.utils import CACHE_DIR
+from ipatel.utils import CACHE_DIR
 
 def test_download_ip2asn_db():
     download_ip2asn_db()

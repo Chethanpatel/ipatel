@@ -1,8 +1,8 @@
-# ENRICH IP (`ipenrich`)
+# ENRICH IP (`ipatel`)
 
 ## Overview
 
-`ipenrich` is a lightweight and efficient Python library and CLI tool for enriching IP addresses and ASNs with metadata such as:
+`ipatel` is a lightweight and efficient Python library and CLI tool for enriching IP addresses and ASNs with metadata such as:
 
 * **ASN** (Autonomous System Number)
 * **Owner / AS Description**
@@ -20,18 +20,18 @@
 ### 📦 Install
 
 ```bash
-pip install ipenrich 
+pip install ipatel 
 ```
 
 ### 🧠 Author
 
 * **Chethan Patel**
-* 🌐 [GitHub](https://github.com/Chethanpatel/ipenrich)
+* 🌐 [GitHub](https://github.com/Chethanpatel/ipatel)
 * 💼 [LinkedIn](https://www.linkedin.com/in/Chethanpatelpn)
 
 # API
 
-`ipenrich` is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:
+`ipatel` is a lightweight Python library and CLI tool to enrich IP addresses and ASNs with:
 
 * ASN (Autonomous System Number)
 * Owner / AS Description
@@ -52,13 +52,13 @@ Enrich a public IP address with detailed metadata including ASN, country, owner,
 #### 1.2 API
 
 ```python
-ipenrich.enrich.enrich_ip(ip: str) -> dict
+ipatel.enrich.enrich_ip(ip: str) -> dict
 ```
 
 #### 1.3 Example
 
 ```python
-from ipenrich.enrich import enrich_ip
+from ipatel.enrich import enrich_ip
 
 result = enrich_ip("8.8.8.8")
 print(result)
@@ -87,13 +87,13 @@ Fetch the raw record for an IP from the IP-to-ASN database.
 #### 2.2 API
 
 ```python
-ipenrich.asn.get_record(ip: str) -> dict
+ipatel.asn.get_record(ip: str) -> dict
 ```
 
 #### 2.3 Example
 
 ```python
-from ipenrich.asn import get_record
+from ipatel.asn import get_record
 
 record = get_record("8.8.8.8")
 print(record)
@@ -120,13 +120,13 @@ Return the ASN number for a given IP address.
 #### 3.2 API
 
 ```python
-ipenrich.asn.get_asn(ip: str) -> int | None
+ipatel.asn.get_asn(ip: str) -> int | None
 ```
 
 #### 3.3 Example
 
 ```python
-from ipenrich.asn import get_asn
+from ipatel.asn import get_asn
 
 get_asn("8.8.8.8")  # ➜ 15169
 ```
@@ -142,13 +142,13 @@ Returns the 2-letter ISO country code for a given IP address.
 #### 4.2 API
 
 ```python
-ipenrich.asn.get_country_code(ip: str) -> str | None
+ipatel.asn.get_country_code(ip: str) -> str | None
 ```
 
 #### 4.3 Example
 
 ```python
-from ipenrich.asn import get_country_code
+from ipatel.asn import get_country_code
 
 get_country_code("8.8.8.8")  # ➜ 'US'
 ```
@@ -164,13 +164,13 @@ Return the organization or description (owner) of the ASN associated with an IP.
 #### 5.2 API
 
 ```python
-ipenrich.asn.get_owner(ip: str) -> str
+ipatel.asn.get_owner(ip: str) -> str
 ```
 
 #### 5.3 Example
 
 ```python
-from ipenrich.asn import get_owner
+from ipatel.asn import get_owner
 
 get_owner("8.8.8.8")  # ➜ 'GOOGLE'
 ```
@@ -191,13 +191,13 @@ Given an ASN, return:
 #### 6.2 API
 
 ```python
-ipenrich.asn.get_ip_ranges_for_asn(asn: int) -> dict
+ipatel.asn.get_ip_ranges_for_asn(asn: int) -> dict
 ```
 
 #### 6.3 Example
 
 ```python
-from ipenrich.asn import get_ip_ranges_for_asn
+from ipatel.asn import get_ip_ranges_for_asn
 
 info = get_ip_ranges_for_asn(15169)
 print(info)
@@ -230,13 +230,13 @@ This is usually handled automatically.
 #### 7.2 API
 
 ```python
-ipenrich.asn.download_ip2asn_db() -> None
+ipatel.asn.download_ip2asn_db() -> None
 ```
 
 #### 7.3 Example
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -252,7 +252,7 @@ Check if the local database is fresh (within 7 days); otherwise, trigger a warni
 #### 8.2 API
 
 ```python
-ipenrich.asn.ensure_ip2asn_db() -> None
+ipatel.asn.ensure_ip2asn_db() -> None
 ```
 
 ---
@@ -261,16 +261,16 @@ ipenrich.asn.ensure_ip2asn_db() -> None
 
 #### 9.1 Description
 
-After installation, use `ipenrich` from your terminal to enrich IPs or fetch ASN data.
+After installation, use `ipatel` from your terminal to enrich IPs or fetch ASN data.
 
 #### 9.2 Commands
 
 ```bash
-ipenrich -i 1.1.1.1         # Enrich an IP
-ipenrich -a 15169           # Lookup ASN details
-ipenrich --update-db        # Manually update the database
-ipenrich --version          # Show current version
-ipenrich -h                 # Show help and usage
+ipatel -i 1.1.1.1         # Enrich an IP
+ipatel -a 15169           # Lookup ASN details
+ipatel --update-db        # Manually update the database
+ipatel --version          # Show current version
+ipatel -h                 # Show help and usage
 ```
 
 ---
@@ -293,7 +293,7 @@ ipenrich -h                 # Show help and usage
 
 # CLI
 
-`ipenrich` includes a built-in CLI tool that allows you to enrich IPs and fetch ASN data directly from the terminal.
+`ipatel` includes a built-in CLI tool that allows you to enrich IPs and fetch ASN data directly from the terminal.
 
 ## 11. Command Line Interface (CLI) 
 
@@ -302,7 +302,7 @@ ipenrich -h                 # Show help and usage
 ### 11.1 Basic Syntax
 
 ```bash
-ipenrich [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
+ipatel [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
 ```
 
 ---
@@ -324,7 +324,7 @@ ipenrich [-i IP_ADDRESS] [-a ASN] [--update-db] [--version] [-h]
 ###### 11.3.1 Enrich an IP Address
 
 ```bash
-ipenrich -i 8.8.8.8
+ipatel -i 8.8.8.8
 ```
 
 Returns:
@@ -342,7 +342,7 @@ Type    : public
 ###### 11.3.2 Lookup ASN Information
 
 ```bash
-ipenrich -a 15169
+ipatel -a 15169
 ```
 
 Returns:
@@ -362,7 +362,7 @@ IP Ranges:
 ###### 11.3.3 Manually Update the Database
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 Downloads the latest IP-to-ASN dataset and replaces the local cache.
@@ -372,10 +372,10 @@ Downloads the latest IP-to-ASN dataset and replaces the local cache.
 ###### 11.3.4 Show Current Version
 
 ```bash
-ipenrich --version
+ipatel --version
 ```
 
-Prints the installed version of `ipenrich`.
+Prints the installed version of `ipatel`.
 
 ---
 
@@ -389,7 +389,7 @@ The tool uses a local database (`ip2asn-v4.tsv`) fetched from [iptoasn.com](http
 
 ###### 11.4.2 Auto-Download Behavior
 
-* When `ipenrich` is used for the first time, it automatically downloads the latest IP-to-ASN dataset.
+* When `ipatel` is used for the first time, it automatically downloads the latest IP-to-ASN dataset.
 * If the local copy is older than **7 days**, a prompt is shown to refresh.
 
 ---
@@ -399,7 +399,7 @@ The tool uses a local database (`ip2asn-v4.tsv`) fetched from [iptoasn.com](http
 You can also force an update manually:
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 This will:
@@ -415,7 +415,7 @@ This will:
 For advanced use cases or library integration, update the database manually via code:
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -426,13 +426,13 @@ download_ip2asn_db()
 
 For issues, feature requests, or contributions:
 
-🌐 [GitHub Repository](https://github.com/chethanpatel/ipenrich)
+🌐 [GitHub Repository](https://github.com/chethanpatel/ipatel)
 
 ---
 
 # 12. Updating the Database
 
-`ipenrich` relies on a local copy of the IP-to-ASN database to provide fast and offline enrichment. This section describes how the database is managed and how you can update it manually or programmatically.
+`ipatel` relies on a local copy of the IP-to-ASN database to provide fast and offline enrichment. This section describes how the database is managed and how you can update it manually or programmatically.
 
 ---
 
@@ -448,7 +448,7 @@ The IP-to-ASN mapping data changes frequently as networks evolve. Keeping the lo
 
 ## 12.2. One-Time Auto Download
 
-When you run any `ipenrich` command for the **first time**, it will automatically:
+When you run any `ipatel` command for the **first time**, it will automatically:
 
 * Download the latest `ip2asn-v4.tsv.gz` file from [iptoasn.com](https://iptoasn.com)
 * Extract and cache it locally for fast lookups
@@ -464,7 +464,7 @@ You can manually refresh the database anytime using the CLI:
 ### 12.3.1 Command
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 ### 12.3.2 What It Does
@@ -477,7 +477,7 @@ ipenrich --update-db
 
 ## 12.4 Auto-Refresh Logic
 
-On every usage, `ipenrich` checks:
+On every usage, `ipatel` checks:
 
 * If the local database exists
 * If the file is older than **7 days**
@@ -485,7 +485,7 @@ On every usage, `ipenrich` checks:
 If the data is outdated, a warning will be printed suggesting you to run:
 
 ```bash
-ipenrich --update-db
+ipatel --update-db
 ```
 
 This helps you stay current without automatic background downloads.
@@ -499,7 +499,7 @@ You can also trigger a database update from Python code.
 ### 5.1 Code Snippet
 
 ```python
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 download_ip2asn_db()
 ```
@@ -513,7 +513,7 @@ This is useful when integrating into scripts or scheduled jobs (e.g., cron).
 The database is stored locally in a cache directory like:
 
 ```bash
-~/.cache/ipenrich/ip2asn-v4.tsv
+~/.cache/ipatel/ip2asn-v4.tsv
 ```
 
 You do **not** need to manage this path manually unless doing advanced customizations.
@@ -524,7 +524,7 @@ You do **not** need to manage this path manually unless doing advanced customiza
 
 * If download fails, check your internet connection.
 * You can delete the cache file to force a fresh download.
-* If `ipenrich` doesn't recognize an IP, it's possible the DB is outdated — try updating it.
+* If `ipatel` doesn't recognize an IP, it's possible the DB is outdated — try updating it.
 
 ---
 

@@ -6,7 +6,7 @@ import ipaddress
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from ipenrich.utils import ip_to_int, int_to_ip, CACHE_DIR
+from ipatel.utils import ip_to_int, int_to_ip, CACHE_DIR
 
 DB_GZ_URL = "https://iptoasn.com/data/ip2asn-v4.tsv.gz"
 DB_PATH = CACHE_DIR / "ip2asn-v4.tsv"

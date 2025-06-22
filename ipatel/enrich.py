@@ -1,5 +1,5 @@
-from ipenrich.asn import get_record
-from ipenrich.utils import get_ip_type
+from ipatel.asn import get_record
+from ipatel.utils import get_ip_type
 
 def enrich_ip(ip: str) -> dict:
     record = get_record(ip)

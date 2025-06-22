@@ -1,16 +1,25 @@
 [project]
-name = "ipenrich"
+name = "ipatel"
 version = "0.1.0"
 description = "A Python IP enrichment library"
 authors = [{ name = "Chethan Patel", email = "chethanpatel100@gmail.com" }]
 readme = "README.md"
-requires-python = ">=3.8"
-dependencies = ["rich"]
+requires-python = ">=3.7"
+dependencies = [
+  "rich"
+]
+
+[tool.setuptools.packages.find]
+include = ["ipatel"]
 
 [project.scripts]
-ipenrich = "ipenrich.cli:main"
-ipenrich-update = "ipenrich.scripts.update_db:main"
+ipatel = "ipatel.cli:main"
+ipatel-update = "ipatel.scripts.update_db:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/Chethanpatel/ipatel"
+Documentation = "https://Chethanpatel.github.io/ipatel/"

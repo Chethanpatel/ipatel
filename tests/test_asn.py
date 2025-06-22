@@ -1,5 +1,5 @@
 import pytest
-from ipenrich.asn import (
+from ipatel.asn import (
     get_asn_info_for_ip,
     get_record,
     get_ip_ranges_for_asn

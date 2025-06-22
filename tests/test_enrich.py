@@ -1,5 +1,5 @@
-from ipenrich.enrich import enrich_ip
-from ipenrich.asn import get_ip_ranges_for_asn
+from ipatel.enrich import enrich_ip
+from ipatel.asn import get_ip_ranges_for_asn
 import json
 
 # Enriching a public IP address

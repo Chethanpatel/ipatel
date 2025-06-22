@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from ipenrich.asn import download_ip2asn_db
+from ipatel.asn import download_ip2asn_db
 
 def main():
     print("🔄 Updating ip2asn database...")
