@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Chethanpatel.github.io/ipatel/quickstart/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Quickstart - ipatel</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Quickstart";
+        var mkdocs_page_input_path = "quickstart.md";
+        var mkdocs_page_url = "/ipatel/quickstart/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> ipatel
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Quickstart</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">📦 Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ip-enrichment">🔍 IP Enrichment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enrich-an-ip-address-with-all-available-fields">Enrich an IP address with all available fields:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#asn-lookups">🧠 ASN Lookups</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-asn-record-raw-dict">Get ASN record (raw dict):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-asn-number">Get ASN number:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-country-code">Get country code:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-as-ownerorganization">Get AS owner/organization:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-all-ip-ranges-owned-by-an-asn">Get all IP ranges owned by an ASN:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilities">🛠️ Utilities</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-ip-to-integer">Convert IP to integer:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-integer-to-ip">Convert integer to IP:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#detect-ip-type-publicprivatereserved">Detect IP type (public/private/reserved):</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-handling">🔄 Database Handling</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#download-the-latest-ip-to-asn-database">Download the latest IP-to-ASN database:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ensure-local-db-is-fresh">Ensure local DB is fresh:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#full-test-script">🧪 Full Test Script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">📝 Notes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-also">📚 See Also</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI Usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">Python API Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">ipatel</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Quickstart</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Chethanpatel/ipatel/edit/master/docs/quickstart.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="quickstart-guide">🚀 Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permanent link">&para;</a></h1>
+<p>Welcome to <strong>IPATEL</strong> — a fast and lightweight IP enrichment library.</p>
+<p>This guide shows how to quickly get started with importing the library and using all core functions.</p>
+<hr />
+<h2 id="installation">📦 Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ipatel
+<span class="sb">````</span>
+
+---
+
+<span class="c1">## ✨ Basic Usage</span>
+
+<span class="sb">```</span>python
+import<span class="w"> </span>ipatel<span class="w"> </span>as<span class="w"> </span>ip
+
+<span class="c1"># Sample test inputs</span>
+<span class="nv">test_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;8.8.8.8&quot;</span>
+<span class="nv">test_asn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15169</span>
+</code></pre></div>
+
+<hr />
+<h2 id="ip-enrichment">🔍 IP Enrichment<a class="headerlink" href="#ip-enrichment" title="Permanent link">&para;</a></h2>
+<h3 id="enrich-an-ip-address-with-all-available-fields">Enrich an IP address with all available fields:<a class="headerlink" href="#enrich-an-ip-address-with-all-available-fields" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="n">test_ip</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Returns:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;ip&#39;</span><span class="p">:</span> <span class="s1">&#39;8.8.8.8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;asn&#39;</span><span class="p">:</span> <span class="mi">15169</span><span class="p">,</span>
+    <span class="s1">&#39;country_code&#39;</span><span class="p">:</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;GOOGLE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ip_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Public&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h2 id="asn-lookups">🧠 ASN Lookups<a class="headerlink" href="#asn-lookups" title="Permanent link">&para;</a></h2>
+<h3 id="get-asn-record-raw-dict">Get ASN record (raw dict):<a class="headerlink" href="#get-asn-record-raw-dict" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_record</span><span class="p">(</span><span class="n">test_ip</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="get-asn-number">Get ASN number:<a class="headerlink" href="#get-asn-number" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_asn</span><span class="p">(</span><span class="n">test_ip</span><span class="p">)</span>  <span class="c1"># ➝ 15169</span>
+</code></pre></div>
+
+<h3 id="get-country-code">Get country code:<a class="headerlink" href="#get-country-code" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_country_code</span><span class="p">(</span><span class="n">test_ip</span><span class="p">)</span>  <span class="c1"># ➝ &quot;US&quot;</span>
+</code></pre></div>
+
+<h3 id="get-as-ownerorganization">Get AS owner/organization:<a class="headerlink" href="#get-as-ownerorganization" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_owner</span><span class="p">(</span><span class="n">test_ip</span><span class="p">)</span>  <span class="c1"># ➝ &quot;GOOGLE&quot;</span>
+</code></pre></div>
+
+<h3 id="get-all-ip-ranges-owned-by-an-asn">Get all IP ranges owned by an ASN:<a class="headerlink" href="#get-all-ip-ranges-owned-by-an-asn" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_ip_ranges_for_asn</span><span class="p">(</span><span class="n">test_asn</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="utilities">🛠️ Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
+<h3 id="convert-ip-to-integer">Convert IP to integer:<a class="headerlink" href="#convert-ip-to-integer" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">ip_to_int</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">)</span>  <span class="c1"># ➝ 134744072</span>
+</code></pre></div>
+
+<h3 id="convert-integer-to-ip">Convert integer to IP:<a class="headerlink" href="#convert-integer-to-ip" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">int_to_ip</span><span class="p">(</span><span class="mi">134744072</span><span class="p">)</span>  <span class="c1"># ➝ &quot;8.8.8.8&quot;</span>
+</code></pre></div>
+
+<h3 id="detect-ip-type-publicprivatereserved">Detect IP type (public/private/reserved):<a class="headerlink" href="#detect-ip-type-publicprivatereserved" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">get_ip_type</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">)</span>  <span class="c1"># ➝ &quot;Loopback&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="database-handling">🔄 Database Handling<a class="headerlink" href="#database-handling" title="Permanent link">&para;</a></h2>
+<h3 id="download-the-latest-ip-to-asn-database">Download the latest IP-to-ASN database:<a class="headerlink" href="#download-the-latest-ip-to-asn-database" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">download_ip2asn_db</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="ensure-local-db-is-fresh">Ensure local DB is fresh:<a class="headerlink" href="#ensure-local-db-is-fresh" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="o">.</span><span class="n">ensure_ip2asn_db</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2 id="full-test-script">🧪 Full Test Script<a class="headerlink" href="#full-test-script" title="Permanent link">&para;</a></h2>
+<p>You can try this all together:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run_tests</span><span class="p">():</span>
+    <span class="n">ip</span><span class="o">.</span><span class="n">ensure_ip2asn_db</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">enrich_ip</span><span class="p">(</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">run_tests</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2 id="notes">📝 Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>All functions are safe for both IPv4 inputs.</li>
+<li>Private, reserved, and loopback IPs are handled gracefully.</li>
+</ul>
+<hr />
+<h2 id="see-also">📚 See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../cli/">CLI Usage</a></li>
+<li><a href="../api/">Detailed API</a></li>
+<li><a href="../update/">DB Upadte</a></li>
+<li><a href="https://github.com/Chethanpatel/ipatel">Project Repo</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cli/" class="btn btn-neutral float-right" title="CLI Usage">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Chethanpatel/ipatel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
