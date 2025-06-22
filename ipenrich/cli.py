@@ -4,87 +4,124 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from rich.box import SIMPLE_HEAVY
 from ipenrich.enrich import enrich_ip
-from ipenrich.asn import get_ip_ranges_for_asn
+from ipenrich.asn import get_ip_ranges_for_asn, download_ip2asn_db
 
+from ipenrich import __version__ as VERSION
 console = Console()
 
 def handle_ip_lookup(ip: str):
     result = enrich_ip(ip)
 
-    panel = Panel.fit(
-        "[bold cyan]IP Enrichment[/bold cyan]\n[green]by Chethan Patel · https://github.com/Chethanpatel/ipenrich[/green]",
+    banner = Panel.fit(
+        "[bold cyan]IP Enrichment[/bold cyan]",
+        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
         border_style="cyan"
     )
-    console.print(panel)
+    console.print(banner)
 
-    table = Table(
-        show_header=True,
-        header_style="bold green",
-        box=SIMPLE_HEAVY,
-        expand=False
-    )
-    table.add_column("Field", style="bold yellow")
-    table.add_column("Value", style="magenta")
+    table = Table(show_header=True, header_style="bold green")
+    table.add_column("Field", style="dim", no_wrap=True)
+    table.add_column("Value", style="bold")
 
     for key, value in result.items():
         table.add_row(key, str(value))
 
     console.print(table)
-    console.print("⭐ [yellow]Star this tool:[/yellow] [bold blue]https://github.com/Chethanpatel/ipenrich[/bold blue]\n")
+    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/chethanpatel/ipenrich[/blue]")
 
 def handle_asn_lookup(asn: int):
     result = get_ip_ranges_for_asn(asn)
+
+    banner = Panel.fit(
+        f"[bold cyan]ASN Lookup: {asn}[/bold cyan]",
+        subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+        border_style="cyan"
+    )
+    console.print(banner)
 
     if not result["ip_ranges"]:
         console.print(f"[red]No entries found for ASN {asn}[/red]")
         return
 
-    panel = Panel.fit(
-        f"[bold cyan]ASN {asn} Enrichment[/bold cyan]\n[green]by Chethan Patel · https://github.com/Chethanpatel/ipenrich[/green]",
-        border_style="cyan"
-    )
-    console.print(panel)
+    console.print(Panel(f"[bold]Owner:[/bold] {result['owner']}\n[bold]Country:[/bold] {result['country_code']}", title="ASN Details"))
 
-    info_table = Table(
-        show_header=True,
-        header_style="bold green",
-        box=SIMPLE_HEAVY
-    )
-    info_table.add_column("Field", style="bold yellow")
-    info_table.add_column("Value", style="magenta")
+    table = Table(title="IP Ranges", header_style="bold green")
+    table.add_column("Start IP")
+    table.add_column("End IP")
 
-    info_table.add_row("asn", str(result["asn"]))
-    info_table.add_row("owner", result["owner"] or "-")
-    info_table.add_row("country_code", result["country_code"] or "-")
+    for start, end in result["ip_ranges"][:10]:  # Limit for readability
+        table.add_row(start, end)
 
-    console.print(info_table)
-
-    ip_table = Table(title="IP Ranges", show_header=True, header_style="bold green", box=SIMPLE_HEAVY)
-    ip_table.add_column("Start IP", style="cyan")
-    ip_table.add_column("End IP", style="cyan")
-
-    for start, end in result["ip_ranges"]:
-        ip_table.add_row(start, end)
-
-    console.print(ip_table)
-    console.print("⭐ [yellow]Star this tool:[/yellow] [bold blue]https://github.com/Chethanpatel/ipenrich[/bold blue]\n")
+    console.print(table)
+    console.print("\n:star: [bold yellow]Star this tool:[/bold yellow] [blue]https://github.com/chethanpatel/ipenrich[/blue]")
 
 def main():
     parser = argparse.ArgumentParser(description="IP and ASN Enrichment CLI", add_help=False)
     parser.add_argument("-i", "--ip", help="IP address to enrich")
     parser.add_argument("-a", "--asn", type=int, help="ASN to lookup")
+    parser.add_argument("--update-db", action="store_true", help="Force update of the IP2ASN database")
+    parser.add_argument("-v", "--version", action="store_true", help="Show version information")
     parser.add_argument("-h", "--help", action="store_true", help="Show help message and exit")
+    parser.add_argument("--about", action="store_true", help="Show information about the tool and author")
 
     args = parser.parse_args()
 
+    if args.version:
+        console.print(f"[bold cyan]ipenrich[/bold cyan] version [yellow]{VERSION}[/yellow]")
+        return
+
     if args.help:
-        parser.print_help()
+        banner = Panel.fit(
+            f"[bold cyan]ipenrich CLI[/bold cyan] [magenta]v{VERSION}[/magenta]\n[green]by Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+            border_style="cyan"
+        )
+        console.print(banner)
+
+        help_table = Table(title="Options", header_style="bold green", show_lines=False)
+        help_table.add_column("Flag", style="cyan", no_wrap=True)
+        help_table.add_column("Description", style="white")
+
+        help_table.add_row("-i, --ip IP", "IP address to enrich")
+        help_table.add_row("-a, --asn ASN", "ASN to lookup")
+        help_table.add_row("--update-db", "Force update of the IP2ASN database")
+        help_table.add_row("-v, --version", "Show version information")
+        help_table.add_row("-h, --help", "Show help message and exit")
+
+        console.print(help_table)
+
         console.print("\n[bold cyan]Examples:[/bold cyan]")
-        console.print("  • Enrich an IP address: [green]ipenrich -i 8.8.8.8[/green]")
-        console.print("  • Lookup IP ranges for ASN: [green]ipenrich -a 15169[/green]")
-        console.print("\n[bold yellow]By Chethan Patel[/bold yellow] · [blue]https://github.com/chethanpatel/ipenrich[/blue]")
+        console.print(" • Enrich an IP address: [green]ipenrich -i 8.8.8.8[/green]")
+        console.print(" • Lookup IP ranges for ASN: [green]ipenrich -a 15169[/green]")
+        console.print(" • Force update database: [green]ipenrich --update-db[/green]")
+        console.print(" • Show version: [green]ipenrich -v[/green]")
+
+        return
+
+
+    if args.update_db:
+        console.print("[cyan]⬇️ Updating the IP2ASN database...[/cyan]")
+        download_ip2asn_db()
+        console.print("[green]✅ Database update completed.[/green]")
+        return
+    
+    if args.about:
+        banner = Panel.fit(
+            f"[bold cyan]ipenrich CLI[/bold cyan] [magenta]v{VERSION}[/magenta]\n\n"
+            f"[bold green]IP and ASN Enrichment Tool[/bold green]\n"
+            f"[dim]• Enrich any public IP with ASN, country, owner, and its type(public/private)[/dim]\n"
+            f"[dim]• Get all IP ranges for a given ASN[/dim]\n"
+            f"[dim]• Works offline after database is downloaded[/dim]\n"
+            f"[dim]• Weekly freshness check for data[/dim]\n"
+            f"[dim]• Checks for stale data weekly (older than 7 days)[/dim]\n"
+            f"[dim]• Supports manual refresh to fetch the latest IP2ASN dataset[/dim]\n\n"
+            f"[bold green]Author:[/bold green] Chethan Patel\n"
+            f"[bold green]GitHub:[/bold green] https://github.com/Chethanpatel/ipenrich\n"
+            f"[bold green]LinkedIn:[/bold green] https://www.linkedin.com/in/chethanpatelpn\n"
+            f"[bold green]Email:[/bold green] helpfromchethan@gmail.com",
+            border_style="cyan"
+        )
+        console.print(banner)
         return
 
     if args.ip:
@@ -93,7 +130,8 @@ def main():
         handle_asn_lookup(args.asn)
     else:
         banner = Panel.fit(
-            "[bold cyan]ipenrich CLI[/bold cyan]\n[green]by Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+            "[bold cyan]ipenrich CLI[/bold cyan]",
+            subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
             border_style="cyan"
         )
         console.print(banner)
@@ -101,39 +139,9 @@ def main():
         console.print("\n[bold cyan]Examples:[/bold cyan]")
         console.print("  • Enrich an IP address: [green]ipenrich -i 8.8.8.8[/green]")
         console.print("  • Lookup IP ranges for ASN: [green]ipenrich -a 15169[/green]")
-
+        console.print("  • Force update database: [green]ipenrich --update-db[/green]")
+        console.print("  • Show version: [green]ipenrich -v[/green]")
         console.print("\nRun [yellow]ipenrich -h[/yellow] for full help.")
-
-        # Example 1: IP lookup preview
-        example_ip = "8.8.8.8"
-        result = enrich_ip(example_ip)
-        ip_table = Table(title=f"Example: Enrichment for IP {example_ip}", show_header=True, header_style="bold magenta")
-        ip_table.add_column("Field", style="dim", no_wrap=True)
-        ip_table.add_column("Value", style="bold")
-
-        for key, value in result.items():
-            ip_table.add_row(key, str(value))
-
-        console.print(ip_table)
-
-        # Example 2: ASN lookup preview
-        example_asn = 15169
-        result_asn = get_ip_ranges_for_asn(example_asn)
-        asn_panel = Panel(
-            f"[bold blue]ASN {example_asn}[/bold blue]\n[bold]Owner:[/bold] {result_asn['owner']}\n[bold]Country:[/bold] {result_asn['country_code']}",
-            title="Example: ASN Lookup"
-        )
-        console.print(asn_panel)
-
-        range_table = Table(title="Sample IP Ranges for ASN 15169", header_style="bold green")
-        range_table.add_column("Start IP")
-        range_table.add_column("End IP")
-
-        for i, (start, end) in enumerate(result_asn["ip_ranges"][:3]):
-            range_table.add_row(start, end)
-
-        console.print(range_table)
-
 
 if __name__ == "__main__":
     main()
