@@ -4,5 +4,6 @@ __pycache__/
 *.pyd
 *.gz
 *.egg-info/
+*.ipypirc
 dist/
 build/
