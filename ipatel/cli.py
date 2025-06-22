@@ -108,7 +108,7 @@ def main():
     
     if args.about:
         banner = Panel.fit(
-            f"[bold cyan]ipatel CLI[/bold cyan] [magenta]v{VERSION}[/magenta]\n\n"
+            f"[bold cyan]    ipatel CLI            [/bold cyan] [magenta]v{VERSION}[/magenta]\n\n"
             f"[bold green]IP and ASN Enrichment Tool[/bold green]\n"
             f"[dim]• Enrich any public IP with ASN, country, owner, and its type(public/private)[/dim]\n"
             f"[dim]• Get all IP ranges for a given ASN[/dim]\n"
@@ -131,7 +131,7 @@ def main():
         handle_asn_lookup(args.asn)
     else:
         banner = Panel.fit(
-            "[bold cyan]ipatel CLI[/bold cyan]",
+            "[bold cyan]  ipatel CLI     [/bold cyan]",
             subtitle="by [green]Chethan Patel[/green] · [blue]https://github.com/Chethanpatel/ipatel[/blue]",
             border_style="cyan"
         )
