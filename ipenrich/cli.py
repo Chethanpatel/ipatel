@@ -72,18 +72,68 @@ def handle_asn_lookup(asn: int):
     console.print("⭐ [yellow]Star this tool:[/yellow] [bold blue]https://github.com/Chethanpatel/ipenrich[/bold blue]\n")
 
 def main():
-    parser = argparse.ArgumentParser(description="IP and ASN Enrichment CLI")
+    parser = argparse.ArgumentParser(description="IP and ASN Enrichment CLI", add_help=False)
     parser.add_argument("-i", "--ip", help="IP address to enrich")
     parser.add_argument("-a", "--asn", type=int, help="ASN to lookup")
+    parser.add_argument("-h", "--help", action="store_true", help="Show help message and exit")
 
     args = parser.parse_args()
+
+    if args.help:
+        parser.print_help()
+        console.print("\n[bold cyan]Examples:[/bold cyan]")
+        console.print("  • Enrich an IP address: [green]ipenrich -i 8.8.8.8[/green]")
+        console.print("  • Lookup IP ranges for ASN: [green]ipenrich -a 15169[/green]")
+        console.print("\n[bold yellow]By Chethan Patel[/bold yellow] · [blue]https://github.com/chethanpatel/ipenrich[/blue]")
+        return
 
     if args.ip:
         handle_ip_lookup(args.ip)
     elif args.asn:
         handle_asn_lookup(args.asn)
     else:
-        parser.print_help()
+        banner = Panel.fit(
+            "[bold cyan]ipenrich CLI[/bold cyan]\n[green]by Chethan Patel[/green] · [blue]https://github.com/chethanpatel/ipenrich[/blue]",
+            border_style="cyan"
+        )
+        console.print(banner)
+
+        console.print("\n[bold cyan]Examples:[/bold cyan]")
+        console.print("  • Enrich an IP address: [green]ipenrich -i 8.8.8.8[/green]")
+        console.print("  • Lookup IP ranges for ASN: [green]ipenrich -a 15169[/green]")
+
+        console.print("\nRun [yellow]ipenrich -h[/yellow] for full help.")
+
+        # Example 1: IP lookup preview
+        example_ip = "8.8.8.8"
+        result = enrich_ip(example_ip)
+        ip_table = Table(title=f"Example: Enrichment for IP {example_ip}", show_header=True, header_style="bold magenta")
+        ip_table.add_column("Field", style="dim", no_wrap=True)
+        ip_table.add_column("Value", style="bold")
+
+        for key, value in result.items():
+            ip_table.add_row(key, str(value))
+
+        console.print(ip_table)
+
+        # Example 2: ASN lookup preview
+        example_asn = 15169
+        result_asn = get_ip_ranges_for_asn(example_asn)
+        asn_panel = Panel(
+            f"[bold blue]ASN {example_asn}[/bold blue]\n[bold]Owner:[/bold] {result_asn['owner']}\n[bold]Country:[/bold] {result_asn['country_code']}",
+            title="Example: ASN Lookup"
+        )
+        console.print(asn_panel)
+
+        range_table = Table(title="Sample IP Ranges for ASN 15169", header_style="bold green")
+        range_table.add_column("Start IP")
+        range_table.add_column("End IP")
+
+        for i, (start, end) in enumerate(result_asn["ip_ranges"][:3]):
+            range_table.add_row(start, end)
+
+        console.print(range_table)
+
 
 if __name__ == "__main__":
     main()
